@@ -183,9 +183,9 @@ export default function Investor() {
                                 <div className='flex justify-center sm:block sm:justify-start lg:block lg:justify-start'>
                                     <div className='h-[2px] w-36 md:mb-8 lg:mb-8 bg-secondary-color'></div>
                                 </div>
-                                {/* <FormInvestor   invest={invest}
+                                { <FormInvestor   invest={invest}
                                                 setInvest={setInvest}
-                                /> */}
+                                /> }
                                 <div className='italic'>
                                     It is not integrated yet with web3 or firebase <br></br>(working on it)
                                 </div>
