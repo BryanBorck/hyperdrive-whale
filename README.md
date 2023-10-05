@@ -56,8 +56,6 @@ Benefits to decentralize the asset management industry and differences from the 
 
 - **Regulatory Compliance:** The use of smart contracts can automate compliance with regulatory requirements.
 
-- **Integration and Potential:** The mar.finance is integrated with **Zeniq Swap**, and can be integrated in the future with other products, like Zeniq Pass. Besides that, there is a lot of potential to explore 
-
 ![Project Photo](./frontend/src/assets/descentralized_am.png)
 
 ## User Roles
