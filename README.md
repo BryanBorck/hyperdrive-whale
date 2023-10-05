@@ -189,6 +189,10 @@ mar Finance: 0xE7fB04eA857F9F96939fc98bD17Ff88ce8b0AdF0
 
 [Demo Link](https://www.loom.com/share/6913cf323b4644cfbcb3133377d3ca2c?sid=17cfc3fb-4d68-4b81-a225-4d8d25e18772)
 
+### Deploy
+
+[Deploy Link](https://whale-finance.vercel.app/)
+
 ### How to run locally steps
 
 You need to run in the frontend:
