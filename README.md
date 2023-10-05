@@ -106,7 +106,7 @@ The main parameters to create a fund:
   
 This ERC allows an nft owner to have control over an account, but with customizable features, such as limitations to the possible transactions made. The marFinance contract implements the ERC721 tokens (NFT) and creates the controllable addresses, which we call Safe Accounts. Also, every fund has a quota (or share), which is an ERC20 token, also deployed when the NFT is created. With these features, the investors are able to invest with a stablecoin (say ZUSD) and get 1:1 quotas in exchange.
 
-When the fund is open to trades, the manager can interact with Zeniq Swap to make profits, using the assets available in the Safe Account. After maturation time, the investor can redeem their yields, with profits or loss. 
+When the fund is open to trades, the manager can interact with any DEX in BTTC Network to make profits, using the assets available in the Safe Account. After maturation time, the investor can redeem their yields, with profits or loss. 
 
 ### Folder Structure
 
@@ -158,14 +158,29 @@ Here is the folder structure of the project with comments about files:
           │     ├── QuotaBeacon.sol                      # Quota Beacon contract file
           │     ├── QuotaToken.sol                       # Quota Token contract file
           │     ├── SafeAccount.sol                      # Safe Account contract file
-          │     ├── marFinance.sol                     # Main marFinance contract file
+          │     ├── MarFinance.sol                       # Main MarFinance contract file
           │     └── interface/                            
           │           ├── IERC6551Account.sol            # Interface file for ERC6551 Account
           │           ├── IERC6551Registry.sol           # Interface file for ERC6551 Registry
           │           └── IV2SwapRouter.sol              # Interface file for Uniswap V2 Swap Router
           └── test/
-                └── WhaleFinance.t.sol                   # Test file for marFinance contract
+                └── MarFinance.t.sol                   # Test file for marFinance contract
 
+
+
+Deployed Contracts (in BTTC Testnet):
+
+Beacon Quota Implementation: 0x229280F2Bd231e20Db2312D22a70B66d19A1d435
+
+BTCUSD: 0x4F28e4Aa42Cec704c41f7641c60a5a8157B3790e
+
+Registry ERC6551: 0xC45e74d5C188201C57468251a09d7691b4E306BA
+
+Beacon Proxy: 0x4E1fD6f5CaB9589992584415dfcE8cEDFe37089F
+
+Safe Account (implements ERC6551): 0x8F123660df72ff9893Bccf5280715fFCf987f34d
+
+Mar Finance: 0x49EbBc5a9364F25284875A201AA39E657E90c5C6
 
 
 
@@ -177,7 +192,7 @@ Here is the folder structure of the project with comments about files:
 
 ### Deploy
 
-[Deploy Link](https://whale-finance.vercel.app/)
+[Deploy Link](https://mar-finance.vercel.app/)
 
 ### How to run locally steps
 
