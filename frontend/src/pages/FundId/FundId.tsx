@@ -12,7 +12,6 @@ import { ethers } from 'ethers';
 import { WhaleFinanceAddress, ZusdAddress, scanUrl } from '../../utils/addresses';
 import { QuotaTokenAbi } from '../../contracts/QuotaToken';
 import { WhaleFinanceAbi } from '../../contracts/WhaleFinance';
-import Zusd from '../../assets/zusd.png';
 
 interface PerformanceItem {
     date: string;
@@ -309,7 +308,6 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
                                             <h3 className='italic'>Your ZUSD Balance:</h3>
                                             <div className='flex flex-row items-center justify-center'>
                                                 <p className='font-bold text-blue-color'>{Number(zusdBalance).toFixed(2)}</p>
-                                                <img src={Zusd} alt="zusd" className='w-6 h-6 ml-2' />
                                             </div>
                                         </div>
                                         <div className='grid grid-cols-2'>
