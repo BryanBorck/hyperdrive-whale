@@ -167,19 +167,7 @@ Here is the folder structure of the project with comments about files:
                 └── WhaleFinance.t.sol                   # Test file for marFinance contract
 
 
-Deployed Contracts (in Zeniq):
 
-Beacon Quota Implementation: 0xB6e2Fb3360F76a51a0AF8A4F86aE5194ae145c6b
-
-ZUSD: 0xA3f156324feCc5ED3A8495C2399666a598A73ee4
-
-Registry ERC6551: 0x16C71580A4D79d6bE3413F5226125Efb5630D669
-
-Beacon Proxy: 0xcBb864E7Af870F000F7b88eeD508Bc0392E2BE94
-
-Safe Account (implements ERC6551): 0x83988Eb399460dD07f9e37628bC61a47dc094113
-
-mar Finance: 0xE7fB04eA857F9F96939fc98bD17Ff88ce8b0AdF0
 
 ## Implemented Solution
 
