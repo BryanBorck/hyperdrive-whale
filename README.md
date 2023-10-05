@@ -1,12 +1,12 @@
-# whale.finance - ZenCon 2023
+# mar.finance - HackaTRON Season 5
 
 ## Decentralized Asset Management
 
-whale.finance basically implements Decentralized Asset Management with ERC 6551. We want to give the opportunity to investors sees their money been managed with full security and auditability.
+mar.finance basically implements Decentralized Asset Management with ERC 6551. We want to give the opportunity to investors sees their money been managed with full security and auditability.
 
 ## The Idea
 
-> "The idea came from our own experience with the fund industry, both of us on the team have already/still interned at investment funds, in the normal asset analysis part. Crypto is not yet so widespread in Brazil, despite the growing expansion, and we saw the potential to decentralize the entire investment process in funds using smart contract technologies, like the ERC 6551. Thus arose whale.finance."
+> "The idea came from our own experience with the fund industry, both of us on the team have already/still interned at investment funds, in the normal asset analysis part. Crypto is not yet so widespread in Brazil, despite the growing expansion, and we saw the potential to decentralize the entire investment process in funds using smart contract technologies, like the ERC 6551. Thus arose mar.finance."
 
 This project uses ERC 6551 to allow managers to hold assets from investors. In this way, we can basically make a descentralized asset management using EVM. The platform is designed for the two publics: The investors, who will be able to invest their tokens in really great funds around the work in a safe way, and the managers, who will be able to manage and hold investor tokens and can have a profit to themselves.
 
@@ -38,9 +38,9 @@ These bullet points below describes the flow over a fund invesment in the tradit
 
 ___
 
-### Descentralized
+### Decentralized
 
-Benefits to descentralize the asset management industry and differences from the traditional flow:
+Benefits to decentralize the asset management industry and differences from the traditional flow:
 
 - **Innovation:** There are no solutions (or few) that implements a full descentralized flow in the asset management industry (only crypto funds represents more than 1 billion dollars, but the solution can be extended to other markets), primordialy because the recent creation of ERC 6551 that can allow better the action of hold assets
 
@@ -50,13 +50,13 @@ Benefits to descentralize the asset management industry and differences from the
 
 - **Transparency:** Utilizing a decentralized platform ensures that all transactions and fund performances are recorded on a transparent and immutable ledger, which can increase trust among investors.
 
-- **Security:** Our main idead behind whale.finance, the use of ERC 6551 secures the way that manager can hold and manage assets from investors.
+- **Security:** Our main idead behind mar.finance, the use of ERC 6551 secures the way that manager can hold and manage assets from investors.
 
 - **Profit Opportunities for Managers:** The platform creates opportunities for managers to profit by offering their expertise to a wider audience, the performance is transparent and the mechanism to hold assets is secure.
 
 - **Regulatory Compliance:** The use of smart contracts can automate compliance with regulatory requirements.
 
-- **Integration and Potential:** The whale.finance is integrated with **Zeniq Swap**, and can be integrated in the future with other products, like Zeniq Pass. Besides that, there is a lot of potential to explore 
+- **Integration and Potential:** The mar.finance is integrated with **Zeniq Swap**, and can be integrated in the future with other products, like Zeniq Pass. Besides that, there is a lot of potential to explore 
 
 ![Project Photo](./frontend/src/assets/descentralized_am.png)
 
@@ -106,7 +106,7 @@ The main parameters to create a fund:
 - Frontend: We used typescrit + tailwind css + vite.js to deploy more fast and be adjusted to our web3 project, that does not have backend
 - Contracts: We use ERC 6551 to allow managers to control assets from investor at the same time that the assets are safe in a different address.
   
-This ERC allows an nft owner to have control over an account, but with customizable features, such as limitations to the possible transactions made. The WhaleFinance contract implements the ERC721 tokens (NFT) and creates the controllable addresses, which we call Safe Accounts. Also, every fund has a quota (or share), which is an ERC20 token, also deployed when the NFT is created. With these features, the investors are able to invest with a stablecoin (say ZUSD) and get 1:1 quotas in exchange.
+This ERC allows an nft owner to have control over an account, but with customizable features, such as limitations to the possible transactions made. The marFinance contract implements the ERC721 tokens (NFT) and creates the controllable addresses, which we call Safe Accounts. Also, every fund has a quota (or share), which is an ERC20 token, also deployed when the NFT is created. With these features, the investors are able to invest with a stablecoin (say ZUSD) and get 1:1 quotas in exchange.
 
 When the fund is open to trades, the manager can interact with Zeniq Swap to make profits, using the assets available in the Safe Account. After maturation time, the investor can redeem their yields, with profits or loss. 
 
@@ -134,7 +134,7 @@ Here is the folder structure of the project with comments about files:
     │          ├── contracts/                            
     │          │      ├── QuotaToken.ts                  # Quota token contract file
     │          │      ├── SafeAccount.ts                 # Safe account contract file
-    │          │      └── WhaleFinance.ts                # WhaleFinance contract file
+    │          │      └── marFinance.ts                # marFinance contract file
     │          ├── firebase/                             
     │          │      ├── test_database.json             # json with mock data to test database in firebase
     │          ├── pages/                                
@@ -160,13 +160,13 @@ Here is the folder structure of the project with comments about files:
           │     ├── QuotaBeacon.sol                      # Quota Beacon contract file
           │     ├── QuotaToken.sol                       # Quota Token contract file
           │     ├── SafeAccount.sol                      # Safe Account contract file
-          │     ├── WhaleFinance.sol                     # Main WhaleFinance contract file
+          │     ├── marFinance.sol                     # Main marFinance contract file
           │     └── interface/                            
           │           ├── IERC6551Account.sol            # Interface file for ERC6551 Account
           │           ├── IERC6551Registry.sol           # Interface file for ERC6551 Registry
           │           └── IV2SwapRouter.sol              # Interface file for Uniswap V2 Swap Router
           └── test/
-                └── WhaleFinance.t.sol                   # Test file for WhaleFinance contract
+                └── WhaleFinance.t.sol                   # Test file for marFinance contract
 
 
 Deployed Contracts (in Zeniq):
@@ -181,7 +181,7 @@ Beacon Proxy: 0xcBb864E7Af870F000F7b88eeD508Bc0392E2BE94
 
 Safe Account (implements ERC6551): 0x83988Eb399460dD07f9e37628bC61a47dc094113
 
-Whale Finance: 0xE7fB04eA857F9F96939fc98bD17Ff88ce8b0AdF0
+mar Finance: 0xE7fB04eA857F9F96939fc98bD17Ff88ce8b0AdF0
 
 ## Implemented Solution
 
