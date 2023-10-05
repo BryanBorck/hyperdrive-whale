@@ -1,0 +1,1 @@
+forge script ./Deploy3.s.sol --rpc-url $BTTC_RPC_URL  --broadcast --legacy

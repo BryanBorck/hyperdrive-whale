@@ -7,13 +7,13 @@ import "forge-std/console.sol";
 import "../src/ERC6551Registry.sol";
 import "../src/SafeAccount.sol";
 import "../src/interface/IERC6551Account.sol";
-import "../src/WhaleFinance.sol";
+import "../src/MarFinance.sol";
 import "../src/QuotaBeacon.sol";
 import "../src/MockERC20.sol";
 
 contract Deploy is Script {
 
-    WhaleFinance public whaleFinance;
+    MarFinance public marFinance;
 
 
 
@@ -28,9 +28,9 @@ contract Deploy is Script {
         address beacon = 0xcBb864E7Af870F000F7b88eeD508Bc0392E2BE94;
         address safeAccount = 0x83988Eb399460dD07f9e37628bC61a47dc094113;
 
-        whaleFinance = new WhaleFinance(address(registry), address(safeAccount), address(beacon), address(stablecoin));
+        marFinance = new MarFinance(address(registry), address(safeAccount), address(beacon), address(stablecoin));
 
-        console.log("WhaleFinance address: %s", address(whaleFinance));
+        console.log("MarFinance address: %s", address(marFinance));
         vm.stopBroadcast();
         
     }

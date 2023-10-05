@@ -9,16 +9,16 @@ import "../src/SafeAccount.sol";
 import "../src/interface/IERC6551Account.sol";
 import "../src/interface/IERC6551Registry.sol";
 import "../src/QuotaToken.sol";
-import "../src/WhaleFinance.sol";
+import "../src/MarFinance.sol";
 import "../src/QuotaBeacon.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./mocks/mockERC20.sol";
 
-contract WhaleFinanceTest is Test {
+contract MarFinanceTest is Test {
     ERC6551Registry public registry;
     SafeAccount public safeAccount;
-    WhaleFinance public whaleFinance;
+    MarFinance public marFinance;
     QuotaToken public quotaTokenImplementation;
     BeaconERC20 public beacon;
     MockERC20 public stablecoin; 
@@ -33,14 +33,14 @@ contract WhaleFinanceTest is Test {
         quotaTokenImplementation = new QuotaToken();
         beacon = new BeaconERC20(address(quotaTokenImplementation));
         vm.prank(owner);
-        whaleFinance = new WhaleFinance(address(registry), address(safeAccount), address(beacon), address(stablecoin));
+        marFinance = new MarFinance(address(registry), address(safeAccount), address(beacon), address(stablecoin));
         
     }
 
     function testCreateFund() public {
         string memory symbol = "WFI";
         vm.prank(owner);
-        whaleFinance.setWhiteListedToken(address(stablecoin));
+        marFinance.setWhiteListedToken(address(stablecoin));
         
         address[] memory allowedTokens = new address[](1);
         allowedTokens[0] = (address(stablecoin));
@@ -50,21 +50,21 @@ contract WhaleFinanceTest is Test {
         uint256 closeInvestiments = block.timestamp + 7 days;
         uint256 openRedeem = block.timestamp + 14 days;
         vm.prank(owner);
-        uint256 fundId = whaleFinance.createFund(symbol,symbol, owner, allowedTokens, admFee, perfFee, openInvestiment, closeInvestiments, openRedeem);
+        uint256 fundId = marFinance.createFund(symbol,symbol, owner, allowedTokens, admFee, perfFee, openInvestiment, closeInvestiments, openRedeem);
 
         assertTrue(fundId >= 0);
     
-        assertTrue(whaleFinance.ownerOf(fundId) == owner);
+        assertTrue(marFinance.ownerOf(fundId) == owner);
 
         address predictedERC6551 = registry.account(
             address(safeAccount),
             block.chainid,
-            address(whaleFinance),
+            address(marFinance),
             fundId,
             0
         );
 
-        assertEq(predictedERC6551, whaleFinance.fundsAddresses(fundId));
+        assertEq(predictedERC6551, marFinance.fundsAddresses(fundId));
     }
 
     function testInvestiment() public {
@@ -76,7 +76,7 @@ contract WhaleFinanceTest is Test {
 
         string memory symbol = "WFI";
         vm.prank(owner);
-        whaleFinance.setWhiteListedToken(address(stablecoin));
+        marFinance.setWhiteListedToken(address(stablecoin));
         
         address[] memory allowedTokens = new address[](1);
         allowedTokens[0] = (address(stablecoin));
@@ -86,19 +86,19 @@ contract WhaleFinanceTest is Test {
         uint256 closeInvestiments = block.timestamp + 7 days;
         uint256 openRedeem = block.timestamp + 14 days;
         vm.prank(owner);
-        uint256 fundId = whaleFinance.createFund(symbol,symbol, owner, allowedTokens, admFee, perfFee, openInvestiment, closeInvestiments, openRedeem);
+        uint256 fundId = marFinance.createFund(symbol,symbol, owner, allowedTokens, admFee, perfFee, openInvestiment, closeInvestiments, openRedeem);
 
         vm.prank(investor);
-        stablecoin.approve(address(whaleFinance), amount);
+        stablecoin.approve(address(marFinance), amount);
         vm.prank(investor);
-        whaleFinance.invest(amount, fundId);
+        marFinance.invest(amount, fundId);
 
-        QuotaToken quotaToken = QuotaToken(whaleFinance.quotasAddresses(fundId));
+        QuotaToken quotaToken = QuotaToken(marFinance.quotasAddresses(fundId));
 
         uint256 newAmount = amount - (amount * admFee / 10000);
         assertTrue(quotaToken.balanceOf(investor) == newAmount);
 
-        uint256 totalAmount = whaleFinance.initialAmounts(fundId);
+        uint256 totalAmount = marFinance.initialAmounts(fundId);
         assertTrue(totalAmount == newAmount);
     }
 

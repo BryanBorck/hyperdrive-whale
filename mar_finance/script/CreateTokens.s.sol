@@ -7,7 +7,6 @@ import "forge-std/console.sol";
 import "../src/MockERC20.sol";
 
 contract Create is Script {
-    MockERC20 public zusd;
     MockERC20 public weth;
 
 
@@ -16,11 +15,11 @@ contract Create is Script {
     function run() external {
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
-        zusd = new MockERC20("WETH", "WETH");
-        zusd.mint(0x0CCfc28Ce76f48726C59Fc2a598b6eAac8bd3Ab4, 100 ether);
+        weth = new MockERC20("WETH", "WETH");
+        weth.mint(0xab53369e91dcFC275744DC0A30BD3E363B2785e0, 100000 ether);
 
 
-        console.log("ZUSD address: %s", address(zusd));
+        console.log("WETH address: %s", address(weth));
 
         vm.stopBroadcast();
         

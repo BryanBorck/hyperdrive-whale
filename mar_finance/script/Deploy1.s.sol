@@ -7,7 +7,7 @@ import "forge-std/console.sol";
 import "../src/ERC6551Registry.sol";
 import "../src/SafeAccount.sol";
 import "../src/interface/IERC6551Account.sol";
-import "../src/WhaleFinance.sol";
+import "../src/MarFinance.sol";
 import "../src/QuotaBeacon.sol";
 import "../src/MockERC20.sol";
 

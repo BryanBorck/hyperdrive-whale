@@ -6,7 +6,7 @@ import "forge-std/console.sol";
 
 
 import "../src/SafeAccount.sol";
-import "../src/WhaleFinance.sol";
+import "../src/MarFinance.sol";
 import "../src/QuotaBeacon.sol";
 import "../src/MockERC20.sol";
 

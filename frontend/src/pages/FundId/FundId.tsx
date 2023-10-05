@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../../firebase/firebase';
-import { get, ref } from "firebase/database";
 import FormInvestor from '../../components/FormInvestor/FormInvestor';
 import LineChartComponent from '../../components/LineChartComponent/LineChartComponent';
 import PieChartComponent from '../../components/PieChartComponent/PieChartComponent';
@@ -13,17 +11,17 @@ import { WhaleFinanceAddress, ZusdAddress, scanUrl } from '../../utils/addresses
 import { QuotaTokenAbi } from '../../contracts/QuotaToken';
 import { WhaleFinanceAbi } from '../../contracts/WhaleFinance';
 
-interface PerformanceItem {
-    date: string;
-    fundId: string;
-    value: number;
-}
+// interface PerformanceItem {
+//     date: string;
+//     fundId: string;
+//     value: number;
+// }
 
-interface BenchmarkItem {
-    date: string;
-    bmId: string;
-    value: number;
-}
+// interface BenchmarkItem {
+//     date: string;
+//     bmId: string;
+//     value: number;
+// }
 
 interface CombinedDataItem {
     date: string;
@@ -57,8 +55,7 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
 
     const [zusdBalance, setZusdBalance] = useState(0);
     const [quotaBalance, setQuotaBalance] = useState(0);
-    const [quotaPrice, setQuotaPrice] = useState(1);
-    setQuotaPrice(1);
+    const [quotaPrice, _] = useState(1);
     const [totalQuotas, setTotalQuotas] = useState(0);
     const [quotaAddress, setQuotaAddress] = useState("--");
 
@@ -74,6 +71,7 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
         try{
 
             const zusdContract = new ethers.Contract(ZusdAddress, QuotaTokenAbi, signer);
+
 
             const balance = await zusdContract.functions.balanceOf(account);
             setZusdBalance(parseFloat(ethers.utils.formatEther(balance[0])));
@@ -166,7 +164,6 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
             const whaleFinanceContract = new ethers.Contract(WhaleFinanceAddress, WhaleFinanceAbi, provider);
             
             const fundName = await whaleFinanceContract.functions.fundsNames(id);
-            console.log(fundName);
 
             const fundx = {
                 id: id,
@@ -180,6 +177,28 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        function mockData() {            
+            setData([
+                { date: "10-20", fundId: "0", performanceValue: 100, bmId: "0", benchmarkValue: 90 },
+                { date: "11-20", fundId: "0", performanceValue: 101, bmId: "0", benchmarkValue: 91 },
+                { date: "12-20", fundId: "0", performanceValue: 104, bmId: "0", benchmarkValue: 92 },
+                { date: "01-20", fundId: "0", performanceValue: 97, bmId: "0", benchmarkValue: 93 },
+                { date: "02-20", fundId: "0", performanceValue: 94, bmId: "0", benchmarkValue: 94 },
+                { date: "03-20", fundId: "0", performanceValue: 95, bmId: "0", benchmarkValue: 95 },
+                { date: "04-20", fundId: "0", performanceValue: 97, bmId: "0", benchmarkValue: 95 },
+                { date: "05-20", fundId: "0", performanceValue: 93, bmId: "0", benchmarkValue: 96 },
+                { date: "06-20", fundId: "0", performanceValue: 88, bmId: "0", benchmarkValue: 96 },
+                { date: "07-20", fundId: "0", performanceValue: 91, bmId: "0", benchmarkValue: 97 },
+                { date: "08-20", fundId: "0", performanceValue: 92, bmId: "0", benchmarkValue: 97 },
+                { date: "09-20", fundId: "0", performanceValue: 89, bmId: "0", benchmarkValue: 98 },
+            ])
+            setFund({id: "0", name: "Fund 1", description: "Fund 1 description"} as FundData)
+        }
+        
+        mockData();
+    }, []);
 
     useEffect(() => {
         getFund();
@@ -205,43 +224,43 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
     },[signer]);
 
     
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Fetching data from the Performance database
-                const performanceRef = ref(db, 'Performance');
-                const performanceSnapshot = await get(performanceRef);
-                const performanceData: PerformanceItem[] = performanceSnapshot.exists() ? performanceSnapshot.val() : [];
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             // Fetching data from the Performance database
+    //             const performanceRef = ref(db, 'Performance');
+    //             const performanceSnapshot = await get(performanceRef);
+    //             const performanceData: PerformanceItem[] = performanceSnapshot.exists() ? performanceSnapshot.val() : [];
 
-                // Fetching data from the Benchmark database
-                const benchmarkRef = ref(db, 'BenchmarkValue');
-                const benchmarkSnapshot = await get(benchmarkRef);
-                const benchmarkData: BenchmarkItem[] = benchmarkSnapshot.exists() ? benchmarkSnapshot.val() : [];
+    //             // Fetching data from the Benchmark database
+    //             const benchmarkRef = ref(db, 'BenchmarkValue');
+    //             const benchmarkSnapshot = await get(benchmarkRef);
+    //             const benchmarkData: BenchmarkItem[] = benchmarkSnapshot.exists() ? benchmarkSnapshot.val() : [];
     
-                const combinedData: CombinedDataItem[] = [];
+    //             const combinedData: CombinedDataItem[] = [];
 
-                performanceData.forEach((pItem: PerformanceItem) => {
-                    benchmarkData.forEach((bItem: BenchmarkItem) => {
-                        if (pItem.date === bItem.date) {
-                            combinedData.push({
-                                date: pItem.date,
-                                fundId: pItem.fundId,
-                                performanceValue: pItem.value,
-                                bmId: bItem.bmId,
-                                benchmarkValue: bItem.value,
-                            });
-                        }
-                    });
-                });
+    //             performanceData.forEach((pItem: PerformanceItem) => {
+    //                 benchmarkData.forEach((bItem: BenchmarkItem) => {
+    //                     if (pItem.date === bItem.date) {
+    //                         combinedData.push({
+    //                             date: pItem.date,
+    //                             fundId: pItem.fundId,
+    //                             performanceValue: pItem.value,
+    //                             bmId: bItem.bmId,
+    //                             benchmarkValue: bItem.value,
+    //                         });
+    //                     }
+    //                 });
+    //             });
 
-                setData(combinedData);
-            } catch (error) {
-                console.error("Error reading data:", error);
-            }
-        };
+    //             setData(combinedData);
+    //         } catch (error) {
+    //             console.error("Error reading data:", error);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
     // function mockData(){            
     //     setData([...[
@@ -305,7 +324,7 @@ export default function FundId({ account, provider, signer }: FundIdProps) {
                                 </div>
                                 <div className='flex flex-col bg-slate-100 p-4 mb-8 rounded-[10px] space-y-1'>
                                         <div className='grid grid-cols-2'>
-                                            <h3 className='italic'>Your ZUSD Balance:</h3>
+                                            <h3 className='italic'>Your BTTCUSD Balance:</h3>
                                             <div className='flex flex-row items-center justify-center'>
                                                 <p className='font-bold text-blue-color'>{Number(zusdBalance).toFixed(2)}</p>
                                             </div>

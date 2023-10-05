@@ -12,7 +12,7 @@ import "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
 import "./QuotaToken.sol";
 import "./interface/IV2SwapRouter.sol";
 
-contract WhaleFinance is ERC721, Ownable {
+contract MarFinance is ERC721, Ownable {
     //GLOBAL VARIABLES FOR THE PLATFORM
     uint256 public _fundIdCounter;
     IERC6551Registry public fundsRegister;
@@ -40,7 +40,7 @@ contract WhaleFinance is ERC721, Ownable {
     event InvestimentMade(address indexed fundAddress, address indexed investor, uint256 amount);
     event RedeemMade(address indexed fundAddress, address indexed investor, uint256 amount);
 
-    constructor(address _fundsRegister, address _erc6551Implementation, address _erc20Implementation, address _stablecoin) Ownable(_msgSender()) ERC721("WhaleFinance", "WFI")  {
+    constructor(address _fundsRegister, address _erc6551Implementation, address _erc20Implementation, address _stablecoin) Ownable(_msgSender()) ERC721("MarFinance", "WFI")  {
         fundsRegister = IERC6551Registry(_fundsRegister);
         erc6551Implementation = _erc6551Implementation; //ERC 6551 Implementation
         stablecoin = IERC20(_stablecoin);

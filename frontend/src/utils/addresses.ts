@@ -1,17 +1,15 @@
-export const WhaleFinanceAddress = "0xE7fB04eA857F9F96939fc98bD17Ff88ce8b0AdF0";
-export const ZusdAddress = "0xA3f156324feCc5ED3A8495C2399666a598A73ee4";
+export const WhaleFinanceAddress = "0x49EbBc5a9364F25284875A201AA39E657E90c5C6";
+export const ZusdAddress = "0x4F28e4Aa42Cec704c41f7641c60a5a8157B3790e";
 
-export const WEthAddress = "0x982EBDD03487622fDa5FD33D1486A5082F281Efd";
-export const WZeniq = "0x74DC1C4ec10abE9F5C8A3EabF1A90b97cDc3Ead8";
+export const WEthAddress = "0x9c00d4f278Cb6fa3c4A137F7FedfB514a7655928";
 
 export const SwapRouter = "0x7963c1bd24E4511A0b14bf148F93e2556AFe3C27";
 
-export const scanUrl = "https://smart.zeniq.net";
+export const scanUrl = "https://testscan.bt.io/#";
 
 export const allowedTokens = {
-    "ZUSD": ZusdAddress,
-    "WETH": WEthAddress,
-    "WZENIQ": WZeniq
+    "BTTCUSD": ZusdAddress,
+    "WETH": WEthAddress
 } as {
     [key: string]: string;
 }
