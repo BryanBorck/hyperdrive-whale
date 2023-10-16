@@ -1,4 +1,4 @@
-# mar.finance - HackaTRON Season 5
+# mar.finance - Solana Hyperdrive 2023
 
 ## Decentralized Asset Management
 
