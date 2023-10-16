@@ -5,9 +5,6 @@ pragma solidity ^0.8.13;
 interface IERC6551Account {
     /// @dev Token bound accounts MUST implement a `receive` function.
     ///
-    /// Token bound accounts MAY perform arbitrary logic to restrict conditions
-    /// under which Ether can be received.
-    receive() external payable;
 
     /// @dev Executes `call` on address `to`, with value `value` and calldata
     /// `data`.

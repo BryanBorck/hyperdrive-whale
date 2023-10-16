@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@upgradeable/contracts/access/OwnableUpgradeable.sol";
-import "@upgradeable/contracts/proxy/utils/Initializable.sol";
-import "@upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol";
+import '../node_modules/../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol';
+import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "../node_modules/@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "../node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "../node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
 
 

@@ -30,6 +30,7 @@ function App() {
     const connection = await connectPhantom();
     if (connection) {
       console.log("Connected to Phantom with address:", connection.address);
+      setSigner(true);
       setAccount(connection.address);
     } else {
       setAccount(null); 

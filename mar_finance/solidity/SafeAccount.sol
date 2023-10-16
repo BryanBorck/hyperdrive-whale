@@ -1,17 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/interfaces/IERC1271.sol";
-import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "../node_modules/@openzeppelin/contracts/interfaces/IERC1271.sol";
+import "../node_modules/@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import "./interface/IERC6551Account.sol";
 import "./interface/IV2SwapRouter.sol";
 
 contract SafeAccount is IERC165, IERC1271, IERC6551Account {
-    receive() external payable {}
 
     IV2SwapRouter public swapRouter = IV2SwapRouter(0x7963c1bd24E4511A0b14bf148F93e2556AFe3C27);
 

@@ -1,18 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "./interface/IERC6551Registry.sol";
-import "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
-import "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
+import "../node_modules/@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
+import "../node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "../node_modules/@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
 import "./QuotaToken.sol";
 import "./interface/IV2SwapRouter.sol";
 
-contract MarFinance is ERC721, Ownable {
+@program_id("F1ipperKF9EfD821ZbbYjS319LXYiBmjhzkkf5a26rC")
+contract WhaleFinance is ERC721, Ownable {
     //GLOBAL VARIABLES FOR THE PLATFORM
     uint256 public _fundIdCounter;
     IERC6551Registry public fundsRegister;
@@ -40,7 +41,8 @@ contract MarFinance is ERC721, Ownable {
     event InvestimentMade(address indexed fundAddress, address indexed investor, uint256 amount);
     event RedeemMade(address indexed fundAddress, address indexed investor, uint256 amount);
 
-    constructor(address _fundsRegister, address _erc6551Implementation, address _erc20Implementation, address _stablecoin) Ownable(_msgSender()) ERC721("MarFinance", "WFI")  {
+    @payer(payer)
+    constructor(address _fundsRegister, address _erc6551Implementation, address _erc20Implementation, address _stablecoin) Ownable(_msgSender()) ERC721("WhaleFinance", "WFI")  {
         fundsRegister = IERC6551Registry(_fundsRegister);
         erc6551Implementation = _erc6551Implementation; //ERC 6551 Implementation
         stablecoin = IERC20(_stablecoin);
