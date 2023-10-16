@@ -3,8 +3,8 @@ import Logo from '../../assets/whale_logo.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Header({ isMetamaskInstalled, connectWallet, account, signer }: 
-    { isMetamaskInstalled: boolean; connectWallet: any; account: string | null; signer: any;}) {
+export default function Header({ isPhantomInstalled, connectWallet, account, signer }: 
+    { isPhantomInstalled: boolean; connectWallet: any; account: string | null; signer: any;}) {
     
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const history = useNavigate();
@@ -53,7 +53,7 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
                             </div>
                             <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
                                 <ConnectWalletBtn
-                                    isMetamaskInstalled={isMetamaskInstalled}
+                                    isPhantomInstalled={isPhantomInstalled}
                                     connectWallet={connectWallet}
                                     account={account}
                                     signer={signer}
@@ -74,7 +74,7 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
                     <li><div className="px-6 lg:px-6 py-2 text-[1.25vw] hover:bg-[rgb(14,42,98)] transition duration-1000 ease-in-out" 
                     onClick={()  => history("/fundslist")} >Funds List</div></li>
                     <ConnectWalletBtn
-                        isMetamaskInstalled={isMetamaskInstalled}
+                        isPhantomInstalled={isPhantomInstalled}
                         connectWallet={connectWallet}
                         account={account}
                         signer={signer}

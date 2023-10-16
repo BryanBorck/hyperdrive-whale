@@ -4,7 +4,8 @@ import { get, ref } from "firebase/database";
 import { Link } from 'react-router-dom';
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import Footer from '../../components/Footer/Footer';
-import { getMetamaskProvider } from '../../utils/connectMetamask';
+// import { getMetamaskProvider } from '../../utils/connectMetamask';
+import { getPhantomProvider } from '../../utils/connectPhantom';
 import { ethers } from 'ethers';
 import { WhaleFinanceAbi } from '../../contracts/WhaleFinance';
 import { WhaleFinanceAddress } from '../../utils/addresses';
@@ -19,6 +20,7 @@ export default function FundsList() {
 
     const [funds, setFunds] = useState<DataPoint[]>([]);
     const [fundsData, setFundsData] = useState<any[]>([]);
+    const [phantomprovider, setPhantomprovider] = useState<any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,8 +41,9 @@ export default function FundsList() {
         const getFunds = async () => {
             try{
                 await fetchData();
-                const provider = getMetamaskProvider() as ethers.providers.Web3Provider;
-                const whaleFinanceContract = new ethers.Contract(WhaleFinanceAddress, WhaleFinanceAbi, provider);
+                // const provider = getMetamaskProvider() as ethers.providers.Web3Provider;
+                setPhantomprovider(getPhantomProvider());
+                const whaleFinanceContract = new ethers.Contract(WhaleFinanceAddress, WhaleFinanceAbi, phantomprovider);
                 const numberFundsBigNumber = await whaleFinanceContract.functions._fundIdCounter() as ethers.BigNumber[];
                 const numberFunds = parseInt(numberFundsBigNumber[0]._hex);
                 console.log(numberFunds);

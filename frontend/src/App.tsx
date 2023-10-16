@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import { connectMetamask } from './utils/connectMetamask'
+import { connectPhantom, getPhantomProvider } from './utils/connectPhantom'
 import Layout from './pages/Layout/Layout';
 import Manager from './pages/Manager/Manager';
 import FundId from './pages/FundId/FundId';
@@ -15,24 +15,31 @@ import SuccessFund from './pages/SuccessFund/SuccessFund';
 function App() {
 
   //handle Metamask wallet connection
-  const [isMetamaskInstalled, setIsMetamaskInstalled] = React.useState<boolean>(false);
+  const [isPhantomInstalled, setisPhantomInstalled] = React.useState<boolean>(false);
   const [account, setAccount] = React.useState<string | null>(null);
   const [provider, setProvider] = React.useState<any>(null);
   const [signer, setSigner] = React.useState<any>(null);
 
   React.useEffect(() => {
-    if ((window as any).ethereum) {
-      //check if Metamask wallet is installed
-      setIsMetamaskInstalled(true);
-      setAccount((window as any).ethereum.selectedAddress);
+    if ('phantom' in window) {
+      setisPhantomInstalled(true);
     }
   }, []);
 
   async function connectWallet(): Promise<void> {
-    const connection = await connectMetamask();
-    setAccount(connection?.address);
-    setProvider(connection?.web3Provider);
-    setSigner(connection?.web3Signer);
+    const connection = await connectPhantom();
+    if (connection) {
+      console.log("Connected to Phantom with address:", connection.address);
+      setAccount(connection.address);
+    } else {
+      setAccount(null); 
+    }
+    setProvider(getPhantomProvider());
+    if (!provider) {
+      console.error("No provider available. Make sure Phantom is installed.");
+      return;
+    }
+    // setSigner(connection?.web3Signer);
   }
 
   return (
@@ -41,7 +48,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <Layout
-              isMetamaskInstalled={isMetamaskInstalled}
+              isPhantomInstalled={isPhantomInstalled}
               connectWallet={connectWallet}
               account={account}
               signer={signer}
@@ -75,7 +82,7 @@ function App() {
             <Route path="/investor" element={<Investor />} />
             <Route path="/create-fund" element={
               <CreateFund
-              isMetamaskInstalled={isMetamaskInstalled}
+              isPhantomInstalled={isPhantomInstalled}
               account={account}
               signer={signer}
               />}

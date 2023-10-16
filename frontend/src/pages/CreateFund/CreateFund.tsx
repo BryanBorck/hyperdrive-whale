@@ -8,8 +8,8 @@ import { ethers } from 'ethers';
 import { WhaleFinanceAbi } from '../../contracts/WhaleFinance';
 import { WhaleFinanceAddress } from '../../utils/addresses';
 
-export default function CreateFund({ isMetamaskInstalled, account, signer }: 
-    { isMetamaskInstalled: boolean; account: string | null; signer: any;}) {
+export default function CreateFund({ isPhantomInstalled, account, signer }: 
+    { isPhantomInstalled: boolean; account: string | null; signer: any;}) {
 
     const history = useNavigate();
 
@@ -37,7 +37,7 @@ export default function CreateFund({ isMetamaskInstalled, account, signer }:
             alert("Please fill all the fields");
             return;
         }
-        if(!isMetamaskInstalled){
+        if(!isPhantomInstalled){
             alert("Please install Metamask");
             return;
         }
