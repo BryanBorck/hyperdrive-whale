@@ -2,13 +2,21 @@
 
 ## Decentralized Asset Management
 
-mar.finance basically implements Decentralized Asset Management with ERC 6551. We want to give the opportunity to investors sees their money been managed with full security and auditability.
+mar.finance basically implements Decentralized Asset Management with Solana, translating the ERC 6551 implementation in EVM. We want to give the opportunity to investors sees their money been managed with full security and auditability.
 
 ## The Idea
 
-> "The idea came from our own experience with the fund industry, both of us on the team have already/still interned at investment funds, in the normal asset analysis part. Crypto is not yet so widespread in some regions, despite the growing expansion, and we saw the potential to decentralize the entire investment process in funds using smart contract technologies, like the ERC 6551. Thus arose mar.finance."
+> "The idea came from our own experience with the fund industry, both of us on the team have already/still interned at investment funds, in the normal asset analysis part. Crypto is not yet so widespread in some regions, despite the growing expansion, and we saw the potential to decentralize the entire investment process in funds using smart contract technologies. Thus arose mar.finance."
 
-This project uses ERC 6551 to allow managers to hold assets from investors. In this way, we can basically make a descentralized asset management using EVM. The platform is designed for the two publics: The investors, who will be able to invest their tokens in really great funds around the work in a safe way, and the managers, who will be able to manage and hold investor tokens and can have a profit to themselves.
+This project uses Solana to allow managers to hold assets from investors and take advantage of Solana strengths: Blazing speed and low fees scale. In this way, we can basically make a descentralized asset management using EVM. The platform is designed for the two publics: The investors, who will be able to invest their tokens in really great funds around the work in a safe way, and the managers, who will be able to manage and hold investor tokens and can have a profit to themselves.
+
+## Why Solana?
+
+Asset Management Industry is huge and the volume of trade operations is giant, so speed and low fee is crucial for the project. The main idea is the allowance of many types of managed assets impacting the whole current industry, Solana can help the project to achieve that. 
+
+> "Solana’s blazing speed and low fees scale as the ecosystem grows without sacrificing censorship resistance or security"
+
+And the final goal: Be multichain (EVM compatible and Solana Compatible) allowing a lot of people to use and take advantages from this.
 
 ___
 
