@@ -200,7 +200,7 @@ Mar Finance: 0x49EbBc5a9364F25284875A201AA39E657E90c5C6
 
 ### Deploy
 
-[Deploy Link](https://mar-finance.vercel.app/)
+[Deploy Link](https://hyperdrive-whale.vercel.app/)
 
 ### How to run locally steps
 
